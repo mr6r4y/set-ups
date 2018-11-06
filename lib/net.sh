@@ -37,6 +37,14 @@ iptables_nat_masquerading()
 {
     check_sudo
 
+    if [ ! $1 ] || [ ! $2 ]
+    then
+        echo "[!] iptables_nat_masquerading - usage: iptables_nat_masquerading NET_FROM INTERFACE"
+        return 1
+    fi
+
+    echo "[*] iptables_nat_masquerading $1 $2"
+
     bash -c 'echo 1 > /proc/sys/net/ipv4/ip_forward'
     bash -c 'echo 1 > /proc/sys/net/ipv4/ip_dynaddr'
 
