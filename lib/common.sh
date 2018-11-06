@@ -1,3 +1,8 @@
+#: Title: common.sh
+#: Description: Library for common functions
+
+ [ -n "$COMMON_LIB" ] && return || readonly COMMON_LIB=1
+
 check_sudo()
 #@ DESCRIPTION: Exits if executing without root privilages
 {
@@ -8,23 +13,19 @@ check_sudo()
     fi
 }
 
-what_is_myip()
-#@ DESCRIPTION: Prints external IP address
-{
-    echo $(curl -s 'https://api.ipify.org')
-}
-
 create_repo_dir()
 #@ USAGE: create_repo_dir DIR USER
 #@ DESCRIPTION: Creates directory for user source repositories
 {
     check_sudo
-    if [[ ! -e $1 ]]; then
-        echo "[*] Creating $1"
-        mkdir $1
-        chown $2:$2 $1
-    else
+
+    if [[ -e $1 ]]; then
         echo "[!] $1 alredy exists"
+        return
     fi
+    
+    echo "[*] create_repo_dir $1"
+    mkdir $1
+    chown $2:$2 $1
 }
 
