@@ -12,6 +12,8 @@ set -e
 
 sudo apt-get install tmux
 
+create_repo_dir "$REPODIR" "$USER"
+
 cd $REPODIR
 if [ ! -e  tmux-plugins ]
 then

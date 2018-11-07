@@ -37,7 +37,7 @@ sudo apt-get -y install \
   zlib1g \
   zlib1g-dev
 
-create_repo_dir "$REPODIR" "$MY_USER"
+create_repo_dir "$REPODIR" "$USER"
 
 cd $REPODIR
 if [[ ! -e $REPODIR/metasploit-framework ]]; then
