@@ -10,7 +10,6 @@ source "$SCRIPT_DIR/lib/common.sh"
 add_route()
 #@ USAGE: add_route NET GATEWAY
 {
-    check_sudo
     if [ ! $1 ] || [ ! $2 ]
     then
         echo "[!] add_route - usage: add_route NET GATEWAY"
@@ -19,7 +18,7 @@ add_route()
 
     echo "[*] add_route $1 $2"
 
-    ip route add $1/24 via $2
+    sudo ip route add $1/24 via $2
 }
 
 what_is_my_ip()
@@ -36,8 +35,6 @@ iptables_nat_masquerading()
 #@              traffic between the NET_FROM through INTERFACE.
 #@              The scirpt flushes iptables.
 {
-    check_sudo
-
     if [ ! $1 ] || [ ! $2 ]
     then
         echo "[!] iptables_nat_masquerading - usage: iptables_nat_masquerading NET_FROM INTERFACE"
@@ -46,10 +43,10 @@ iptables_nat_masquerading()
 
     echo "[*] iptables_nat_masquerading $1 $2"
 
-    bash -c 'echo 1 > /proc/sys/net/ipv4/ip_forward'
-    bash -c 'echo 1 > /proc/sys/net/ipv4/ip_dynaddr'
+    sudo bash -c 'echo 1 > /proc/sys/net/ipv4/ip_forward'
+    sudo bash -c 'echo 1 > /proc/sys/net/ipv4/ip_dynaddr'
 
-    iptables --flush
+    sudo iptables --flush
 
-    iptables -t nat -A POSTROUTING -s $1/16 -o $2 -j MASQUERADE    
+    sudo iptables -t nat -A POSTROUTING -s $1/16 -o $2 -j MASQUERADE    
 }
