@@ -1,4 +1,4 @@
 #!/bin/bash
 
-MY_USER=user
-REPODIR=/opt/repo
+export MY_USER=user
+export REPODIR=/opt/repo

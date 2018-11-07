@@ -14,5 +14,5 @@ bind-key s command-prompt -p "send pane to:" "join-pane -t '%%'"
 # Search Mode VI (default is emacs)
 set-window-option -g mode-keys vi
 
-run-shell /opt/repo/tmux-logging/logging.tmux
+run-shell {{REPODIR}}/tmux-logging/logging.tmux
 

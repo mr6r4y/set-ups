@@ -31,6 +31,7 @@ what_is_my_ip()
 iptables_nat_masquerading()
 #@ USAGE: iptables_nat_masquerading NET_FROM INTERFACE
 #@ EXAMPLE: iptables_nat_masquerading 192.168.100.0 tun0
+#@ REF: https://help.ubuntu.com/lts/serverguide/firewall.html.en
 #@ DESCRIPTION: Simple rule that makes the machine NATing the
 #@              traffic between the NET_FROM through INTERFACE.
 #@              The scirpt flushes iptables.
