@@ -70,6 +70,7 @@ Install and set-up:
 * virtual-host-discovery
 * tshark
 * tcpdump
+* searchsploit
 
 ### Password Cracking
 

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-export REPODIR=/opt/repo
+[[ -z "${REPODIR}" ]] && export REPODIR=/opt/repo

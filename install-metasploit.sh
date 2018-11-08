@@ -41,6 +41,7 @@ sudo apt-get -y install \
 
 create_repo_dir "$REPODIR" "$USER"
 
+# Clone metasploit from GitHub
 cd $REPODIR
 if [[ ! -e $REPODIR/metasploit-framework ]]; then
     git clone https://github.com/rapid7/metasploit-framework.git

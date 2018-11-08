@@ -13,6 +13,15 @@ check_sudo()
     fi
 }
 
+create_local_bin()
+{
+    if [ ! -e "$HOME/.local/bin" ]
+    then
+        mkdir -p "$HOME/.local/bin"
+        echo "[*] Create $HOME/.local/bin"
+    fi
+}
+
 create_repo_dir()
 #@ USAGE: create_repo_dir DIR USER
 #@ DESCRIPTION: Creates directory for user source repositories
