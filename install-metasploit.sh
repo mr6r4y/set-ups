@@ -49,14 +49,25 @@ fi
 cd metasploit-framework
 
 # Install RVM
-curl -sSL https://rvm.io/mpapis.asc | gpg --import -
-curl -L https://get.rvm.io | bash -s stable
-source ~/.rvm/scripts/rvm
-echo "source ~/.rvm/scripts/rvm" >> ~/.bashrc
-source ~/.bashrc
+if [ -z $(which rvm) ]
+then
+    echo "[*] Installing RVM .."
+    curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+    curl -L https://get.rvm.io | bash -s stable
+    source ~/.rvm/scripts/rvm
+    echo "source ~/.rvm/scripts/rvm" >> ~/.bashrc
+    source ~/.bashrc
+fi
+
+# Install ruby version for metasploit
 RUBYVERSION=$(wget https://raw.githubusercontent.com/rapid7/metasploit-framework/master/.ruby-version -q -O - )
-rvm install $RUBYVERSION
-rvm use $RUBYVERSION --default
+if [[ $(python -c "print '%i' % ('$(ruby -v)'.split(' ')[1] == '$RUBYVERSION')") -eq 0 ]]
+then
+    echo "[*] Installing Ruby-$RUBYVERSION"
+    rvm install $RUBYVERSION
+    rvm use $RUBYVERSION --default
+fi
+
 ruby -v
 
 gem install bundler
