@@ -6,12 +6,14 @@ Scripts and common configurations for setting up VMs from scratch and administra
 
 ### install-base-dev.sh
 
+**TO-DO**
+
 * python2.7-dev
 * python3.6-dev
 
 ### install-base-netsec.sh
 
-Installs:
+**TO-DO**
 
 * nmap
 * dnscan
@@ -19,13 +21,39 @@ Installs:
 * gobuster
 * virtual-host-discovery
 
+## install-tmux.sh
+
+### Usage
+
+    ./install-tmux.sh
+
+### Description
+
+Install `tmux` with conigurations and plugins seen at [IppSec's video tutorial](https://www.youtube.com/watch?v=Lqehvpe_djs)
+
 ## install-metasploit.sh
 
-Install and set-up:
+### Usage
 
-* RVM
-* postgres
-* metasploit-framework
+    ./install-metasploit.sh
+
+### Description
+
+Installs and configures [metasploit-framework](https://github.com/rapid7/metasploit-framework) as described in [Setting Up a Metasploit Development Environment](https://github.com/rapid7/metasploit-framework/wiki/Setting-Up-a-Metasploit-Development-Environment)
+
+## iptables-nat.sh
+
+### Usage
+
+    ./iptables-nat.sh NET_FROM INTERFACE
+
+### Example
+    
+    ./iptables-nat.sh 192.168.10.0 tun0
+
+### Description
+
+Makes the machine forward traffic from the `NET_FROM` to everything connected to device `tun0`. It is convinient to use it when make a VPN connection on e VM and want that VM to forward traffic to the tunneled network.
 
 ## Tools
 

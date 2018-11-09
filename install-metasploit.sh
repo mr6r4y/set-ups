@@ -46,31 +46,63 @@ cd $REPODIR
 if [[ ! -e $REPODIR/metasploit-framework ]]; then
     git clone https://github.com/rapid7/metasploit-framework.git
 fi
+
 cd metasploit-framework
+git pull
 
 # Install RVM
 if [ -z $(which rvm) ]
 then
-    echo "[*] Installing RVM .."
+    echo "[*] Installing RVM "
     curl -sSL https://rvm.io/mpapis.asc | gpg --import -
     curl -L https://get.rvm.io | bash -s stable
     source ~/.rvm/scripts/rvm
     echo "source ~/.rvm/scripts/rvm" >> ~/.bashrc
     source ~/.bashrc
+else
+    echo "[*] Include RVM"
+    source ~/.rvm/scripts/rvm
 fi
 
 # Install ruby version for metasploit
 RUBYVERSION=$(wget https://raw.githubusercontent.com/rapid7/metasploit-framework/master/.ruby-version -q -O - )
-if [[ $(python -c "print '%i' % ('$(ruby -v)'.split(' ')[1] == '$RUBYVERSION')") -eq 0 ]]
+if [[ $(python -c "print '%i' % ('$(ruby -v)'.split(' ')[1].split('p')[0] == '$RUBYVERSION')") -eq 0 ]]
 then
-    echo "[*] Installing Ruby-$RUBYVERSION"
+    echo "[*] Installing/using ruby $RUBYVERSION"
     rvm install $RUBYVERSION
     rvm use $RUBYVERSION --default
 fi
 
-ruby -v
+echo "[*] Using ruby: $(ruby -v)"
 
+echo "[*] Install ruby packages"
 gem install bundler
-bundle install
+echo "[*] Check bundle"
+[[ $(python -c "print '%i' % ('''The Gemfile's dependencies are satisfied''' in '''$(bundle check)''')") -eq 0 ]] && echo "[*] Install bundle" && bundle install
 
-# TO-DO: configure postgres
+# Configure postgres db and user account
+echo "[*] Configuring postgresql"
+
+export MSF_DB_USER=msfdev
+export MSF_DB_DEV_NAME=msf_dev_db
+export MSF_DB_TEST_NAME=msf_test_db
+export MSF_DB_PASSWD=msfdev
+
+sudo update-rc.d postgresql enable
+sudo service postgresql start
+
+sudo -u postgres psql -f "$SCRIPT_DIR/conf/pg-utf8.sql"
+[ ! $(sudo -u postgres psql postgres -tAc "SELECT 1 FROM pg_roles WHERE rolname='$MSF_DB_USER'") -eq 1 ] && sudo -u postgres createuser $MSF_DB_USER -dRS
+sudo -u postgres psql -c "ALTER USER $MSF_DB_USER WITH ENCRYPTED PASSWORD '$MSF_DB_PASSWD';"
+sudo -u postgres dropdb $MSF_DB_DEV_NAME
+sudo -u postgres createdb --owner $MSF_DB_USER $MSF_DB_DEV_NAME
+sudo -u postgres dropdb $MSF_DB_TEST_NAME
+sudo -u postgres createdb --owner $MSF_DB_USER $MSF_DB_TEST_NAME
+
+[ ! -e "$HOME/.msf4" ] && mkdir "$HOME/.msf4"
+$SCRIPT_DIR/tpl-rend.py -t "$SCRIPT_DIR/conf/msf-database.yml.tpl" -o "$HOME/.msf4/database.yml"
+
+echo "[*] Check msfconsole db connection"
+./msfconsole -qx "db_status; exit"
+
+cd -
