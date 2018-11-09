@@ -11,6 +11,8 @@ source "$SCRIPT_DIR/config.sh"
 
 set -e
 
+OLDDIR=$(pwd)
+
 sudo apt-get -y install \
   autoconf \
   bison \
@@ -105,4 +107,11 @@ $SCRIPT_DIR/tpl-rend.py -t "$SCRIPT_DIR/conf/msf-database.yml.tpl" -o "$HOME/.ms
 echo "[*] Check msfconsole db connection"
 ./msfconsole -qx "db_status; exit"
 
-cd -
+create_local_bin
+if [ ! -e  "$HOME/.local/bin/msfconsole" ]
+then
+    echo "[*] Link msfconsole in $HOME/.local/bin"
+    ln -s "$(pwd)/msfconsole" "$HOME/.local/bin/msfconsole"
+fi
+
+cd $OLDDIR
