@@ -41,6 +41,16 @@ Install `tmux` with conigurations and plugins seen at [IppSec's video tutorial](
 
 Installs and configures [metasploit-framework](https://github.com/rapid7/metasploit-framework) as described in [Setting Up a Metasploit Development Environment](https://github.com/rapid7/metasploit-framework/wiki/Setting-Up-a-Metasploit-Development-Environment)
 
+## install-exploitdb.sh
+
+### Usage
+
+    ./install-exploitdb.sh
+
+### Description
+
+Clones [exploitdb](https://github.com/offensive-security/exploitdb.git) and links `searchsploit` to be in `PATH`.
+
 ## iptables-nat.sh
 
 ### Usage
