@@ -107,11 +107,6 @@ $SCRIPT_DIR/tpl-rend.py -t "$SCRIPT_DIR/conf/msf-database.yml.tpl" -o "$HOME/.ms
 echo "[*] Check msfconsole db connection"
 ./msfconsole -qx "db_status; exit"
 
-create_local_bin
-if [ ! -e  "$HOME/.local/bin/msfconsole" ]
-then
-    echo "[*] Link msfconsole in $HOME/.local/bin"
-    ln -s "$(pwd)/msfconsole" "$HOME/.local/bin/msfconsole"
-fi
+link_to_home_local_bin "$(pwd)/msfconsole"
 
 cd $OLDDIR

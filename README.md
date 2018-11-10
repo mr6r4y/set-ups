@@ -31,6 +31,22 @@ Scripts and common configurations for setting up VMs from scratch and administra
 
 Install `tmux` with conigurations and plugins seen at [IppSec's video tutorial](https://www.youtube.com/watch?v=Lqehvpe_djs)
 
+## install-cracking-tools.sh
+
+### Usage
+
+    ./install-cracking-tools.sh
+
+### Description
+
+Installs and configures:
+
+* hashcat
+* hydra
+* john
+* medusa
+* ncrack
+
 ## install-metasploit.sh
 
 ### Usage
@@ -109,12 +125,16 @@ Makes the machine forward traffic from the `NET_FROM` to everything connected to
 * tshark
 * tcpdump
 * searchsploit
+* smbclient
 
 ### Password Cracking
 
 * hashcat
 * hashcat-utils
 * pack-0.0.4
+* hydra
+* medusa
+* ncrack
 
 ### Other
 

@@ -36,3 +36,15 @@ create_repo_dir()
     sudo chown $2:$2 $1
 }
 
+link_to_home_local_bin()
+#@ USAGE: link_to_home_local_bin PATH_TO_EXEC
+#@ DESCRIPTION: create symlink in ~/.local/bin if not exists
+{
+    create_local_bin
+    name=$(basename "$1")
+    abs_path=$(realpath "$1")
+    rm -f "$HOME/.local/bin/$name"
+    echo "[*] Link $name in $HOME/.local/bin"
+    ln -s "$abs_path" "$HOME/.local/bin/$name"
+}
+
