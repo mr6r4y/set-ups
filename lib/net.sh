@@ -3,7 +3,8 @@
 
 [ -n "$NET_LIB" ] && return || readonly NET_LIB=1
 
-SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
+BASE=$([[ $0 -eq "-bash" ]] && echo "./self" || echo $0)
+SCRIPT_DIR="$(dirname "$(readlink -f "$BASE")")"
 
 source "$SCRIPT_DIR/lib/common.sh"
 
@@ -49,4 +50,12 @@ iptables_nat_masquerading()
     sudo iptables --flush
 
     sudo iptables -t nat -A POSTROUTING -s $1/16 -o $2 -j MASQUERADE    
+}
+
+get_latest_chromedriver_download_url()
+#@ USAGE: get_latest_chromedriver_download_url
+#@ DESCRIPTION: Returns URL to latest chromedriver
+{
+    LATEST_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE")
+    echo "https://chromedriver.storage.googleapis.com/$LATEST_VERSION/chromedriver_linux64.zip"
 }
