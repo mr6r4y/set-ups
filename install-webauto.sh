@@ -2,8 +2,6 @@
 
 #: Title: install-webaut.sh
 #: Description: Installation of Web automation tools: Chrome, selenium, chromedriver
-#: References:
-#:      * https://github.com/OJ/gobuster
 
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 
