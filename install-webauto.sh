@@ -15,15 +15,18 @@ OLDDIR=$(pwd)
 
 create_repo_dir "$REPODIR" "$USER"
 
-echo "[*] Install latest chromedriver"
-LATEST_CHROMEDRIVER=$(get_latest_chromedriver_download_url)
-cd $REPODIR
-[ ! -e ./chromedriver ] && mkdir chromedriver
-cd chromedriver
-wget "$LATEST_CHROMEDRIVER"
-unzip *.zip
-CHROMEDRIVER_EXEC="$(pwd)/chromedriver"
-link_to_home_local_bin "$CHROMEDRIVER_EXEC"
+if [ -z $(which chromedriver) ]
+then
+    echo "[*] Install latest chromedriver"
+    LATEST_CHROMEDRIVER=$(get_latest_chromedriver_download_url)
+    cd $REPODIR
+    [ ! -e ./chromedriver ] && mkdir chromedriver
+    cd chromedriver
+    wget "$LATEST_CHROMEDRIVER"
+    unzip *.zip
+    CHROMEDRIVER_EXEC="$(pwd)/chromedriver"
+    link_to_home_local_bin "$CHROMEDRIVER_EXEC"
+fi
 
 # Install google chrome
 if [ ! -e /etc/apt/sources.list.d/google.list ]
@@ -39,3 +42,21 @@ sudo apt-get install google-chrome-stable
 # Install selenium
 echo "[*] Install python selenium packages"
 sudo pip install selenium
+
+echo "[*] Create new Chrome profile"
+# TO-DO: ..
+if [ -e "$HOME/Desktop" ]
+then
+    echo "[*] Generate Desktop Icon for Chrome-Burp-profile"
+fi
+
+if [ -z $(which firefox) ]
+then
+    echo "[*] Create new Firefox profile"
+    # TO-DO: ..
+    if [ -e "$HOME/Desktop" ]
+    then
+        echo "[*] Generate Desktop Icon for Firefox-Burp-profile"
+        # TO-DO: ..
+    fi
+fi

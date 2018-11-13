@@ -21,3 +21,5 @@ sudo apt-get -y install \
     ruby \
     golang \
     curl
+
+sudo apt-get -y install vim-gtk3 vim fonts-dejavu 
