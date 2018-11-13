@@ -12,11 +12,12 @@ set -e
 
 sudo apt-get update
 
-sudo apt-get install \
+sudo apt-get -y install \
     build-essential \
     python-dev \
     python-pip \
     python3-dev \
     python3-pip \
     ruby \
-    golang
+    golang \
+    curl

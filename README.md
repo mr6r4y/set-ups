@@ -6,10 +6,35 @@ Scripts and common configurations for setting up VMs from scratch and administra
 
 ### install-base-dev.sh
 
-**TO-DO**
+#### Usage
 
+    ./install-base-dev.sh
+
+#### Description
+
+Installs:
+
+* build-essentials
+* curl
 * python2.7-dev
 * python3.6-dev
+* python-pip
+* ruby
+* golang
+
+### install-webauto.sh
+
+#### Usage
+
+    ./install-webauto.sh
+
+#### Description
+
+Installs:
+
+* google-chrome
+* chromedriver
+* python-selenium
 
 ### install-base-netsec.sh
 
@@ -20,24 +45,25 @@ Scripts and common configurations for setting up VMs from scratch and administra
 * dirsearch
 * gobuster
 * virtual-host-discovery
+* SecList
 
-## install-tmux.sh
+### install-tmux.sh
 
-### Usage
+#### Usage
 
     ./install-tmux.sh
 
-### Description
+#### Description
 
 Install `tmux` with conigurations and plugins seen at [IppSec's video tutorial](https://www.youtube.com/watch?v=Lqehvpe_djs)
 
-## install-cracking-tools.sh
+### install-cracking-tools.sh
 
-### Usage
+#### Usage
 
     ./install-cracking-tools.sh
 
-### Description
+#### Description
 
 Installs and configures:
 
@@ -47,37 +73,37 @@ Installs and configures:
 * medusa
 * ncrack
 
-## install-metasploit.sh
+### install-metasploit.sh
 
-### Usage
+#### Usage
 
     ./install-metasploit.sh
 
-### Description
+#### Description
 
 Installs and configures [metasploit-framework](https://github.com/rapid7/metasploit-framework) as described in [Setting Up a Metasploit Development Environment](https://github.com/rapid7/metasploit-framework/wiki/Setting-Up-a-Metasploit-Development-Environment)
 
-## install-exploitdb.sh
+### install-exploitdb.sh
 
-### Usage
+#### Usage
 
     ./install-exploitdb.sh
 
-### Description
+#### Description
 
 Clones [exploitdb](https://github.com/offensive-security/exploitdb.git) and links `searchsploit` to be in `PATH`.
 
-## iptables-nat.sh
+### iptables-nat.sh
 
-### Usage
+#### Usage
 
     ./iptables-nat.sh NET_FROM INTERFACE
 
-### Example
-    
+#### Example
+
     ./iptables-nat.sh 192.168.10.0 tun0
 
-### Description
+#### Description
 
 Makes the machine forward traffic from the `NET_FROM` to everything connected to device `tun0`. It is convinient to use it when make a VPN connection on e VM and want that VM to forward traffic to the tunneled network.
 
