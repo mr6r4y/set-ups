@@ -60,14 +60,13 @@ if [[ ! -e $REPODIR/wpscan ]]; then
     git clone https://github.com/wpscanteam/wpscan.git
 fi
 cd wpscan
+
 # Install ruby version for metasploit
 RUBYVERSION=$(wget https://github.com/wpscanteam/wpscan/master/.ruby-version -q -O - )
-if [[ $(python -c "print '%i' % ('$(ruby -v)'.split(' ')[1].split('p')[0] == '$RUBYVERSION')") -eq 0 ]]
-then
-    echo "[*] Installing/using ruby $RUBYVERSION"
-    rvm install $RUBYVERSION
-    rvm use $RUBYVERSION --default
-fi
+echo "[*] Installing/using ruby $RUBYVERSION"
+rvm install $RUBYVERSION
+rvm use $RUBYVERSION --default
+
 bundle install && rake install
 
 cd $OLDDIR
