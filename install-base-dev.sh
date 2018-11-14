@@ -20,6 +20,7 @@ sudo apt-get -y install \
     python3-pip \
     ruby \
     golang \
-    curl
+    curl \
+    default-jdk
 
 sudo apt-get -y install vim-gtk3 vim fonts-dejavu 

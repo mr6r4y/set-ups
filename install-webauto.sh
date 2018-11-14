@@ -62,6 +62,7 @@ then
     then
         echo "[*] Create new Firefox profile"
         mkdir -p $FIREFOX_PROFILE_PATH
+        [[ -z "${DISPLAY}" ]] && export DISPLAY=":0.0"
         firefox -no-remote -CreateProfile "$FIREFOX_PROFILE $FIREFOX_PROFILE_PATH"
     fi
     if [ -e "$HOME/Desktop" ]
