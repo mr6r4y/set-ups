@@ -61,7 +61,7 @@ if [[ ! -e $REPODIR/wpscan ]]; then
 fi
 
 # Install ruby version for wpscan
-RUBYVERSION=$(wget https://github.com/wpscanteam/wpscan/blob/master/.ruby-version -q -O - )
+RUBYVERSION=$(wget https://raw.githubusercontent.com/wpscanteam/wpscan/master/.ruby-version -q -O - )
 echo "[*] Installing/using ruby $RUBYVERSION"
 rvm install $RUBYVERSION
 rvm use $RUBYVERSION --default
