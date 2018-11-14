@@ -16,12 +16,9 @@ OLDDIR=$(pwd)
 
 sudo apt-get -y install \
     nmap \
-    tcpdump \
-    tshark
+    tcpdump
 
 create_repo_dir "$REPODIR" "$USER"
-
-install_rvm
 
 echo "[*] Get SecLists"
 cd $REPODIR
@@ -52,22 +49,5 @@ git pull
 go get -u github.com/OJ/gobuster
 go build
 link_to_home_local_bin ./gobuster
-
-echo "[*] Install wpscan"
-cd $REPODIR
-if [[ ! -e $REPODIR/wpscan ]]; then
-    echo "[*] Clone wpscan"
-    git clone https://github.com/wpscanteam/wpscan.git
-fi
-
-# Install ruby version for wpscan
-RUBYVERSION=$(wget https://raw.githubusercontent.com/wpscanteam/wpscan/master/.ruby-version -q -O - )
-echo "[*] Installing/using ruby $RUBYVERSION"
-rvm install $RUBYVERSION
-rvm use $RUBYVERSION --default
-
-cd wpscan
-
-bundle install && rake install
 
 cd $OLDDIR
