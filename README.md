@@ -35,17 +35,26 @@ Installs:
 * google-chrome
 * chromedriver
 * python-selenium
+* configures chrome and firefox profiles in a custom directory
 
-### install-base-netsec.sh
+### install-netsec.sh
 
-**TO-DO**
+#### Usage
 
-* nmap
+    ./install-netsec.sh
+
+#### Description
+
+Installs:
+
+* SecLists
 * dnscan
-* dirsearch
 * gobuster
+* wpscan
+
+**TO-DO:**
+
 * virtual-host-discovery
-* SecList
 
 ### install-tmux.sh
 
