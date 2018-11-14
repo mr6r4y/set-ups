@@ -30,7 +30,7 @@ then
     cp $HOME/BurpSuiteCommunity/*.desktop $HOME/Desktop
 fi
 
-if [ ! -e "$HOME/BurpSuiteCommunity" ]
+if [ ! -e "/opt/zaproxy/" ]
 then
     echo "[*] Get OWASP ZAP"
     wget "https://github.com/zaproxy/zaproxy/releases/download/2.7.0/ZAP_2_7_0_unix.sh"
