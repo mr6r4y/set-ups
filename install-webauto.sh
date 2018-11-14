@@ -29,7 +29,7 @@ then
 fi
 
 # Install google chrome
-if [ ! -e /etc/apt/sources.list.d/google.list ]
+if [ ! -e /etc/apt/sources.list.d/google-chrome.list ]
 then
     echo "[*] Prepare apt sources for google-chrome"
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
@@ -43,20 +43,31 @@ sudo apt-get install google-chrome-stable
 echo "[*] Install python selenium packages"
 sudo pip install selenium
 
+export CHROME_PROFILE_PATH="$HOME/browser-profiles/chrome"
+export FIREFOX_PROFILE_PATH="$HOME/browser-profiles/firefox"
+export FIREFOX_PROFILE="BurpProfile"
+
 echo "[*] Create new Chrome profile"
-# TO-DO: ..
+[ ! -e $CHROME_PROFILE_PATH ] && mkdir -p $CHROME_PROFILE_PATH
 if [ -e "$HOME/Desktop" ]
 then
     echo "[*] Generate Desktop Icon for Chrome-Burp-profile"
+    $SCRIPT_DIR/tpl-rend.py -t "$SCRIPT_DIR/conf/burp-google-chrome.desktop.tpl" -o "$HOME/Desktop/burp-google-chrome.desktop"
+    chmod +x "$HOME/Desktop/burp-google-chrome.desktop"
 fi
 
-if [ -z $(which firefox) ]
+if [ ! -z $(which firefox) ]
 then
-    echo "[*] Create new Firefox profile"
-    # TO-DO: ..
+    if [ ! -e $FIREFOX_PROFILE_PATH ]
+    then
+        echo "[*] Create new Firefox profile"
+        mkdir -p $FIREFOX_PROFILE_PATH
+        firefox -no-remote -CreateProfile "$FIREFOX_PROFILE $FIREFOX_PROFILE_PATH"
+    fi
     if [ -e "$HOME/Desktop" ]
     then
         echo "[*] Generate Desktop Icon for Firefox-Burp-profile"
-        # TO-DO: ..
+        $SCRIPT_DIR/tpl-rend.py -t "$SCRIPT_DIR/conf/burp-firefox.desktop.tpl" -o "$HOME/Desktop/burp-firefox.desktop"
+        chmod +x "$HOME/Desktop/burp-firefox.desktop"
     fi
 fi
