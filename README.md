@@ -50,6 +50,7 @@ Installs:
 * SecLists
 * dnscan
 * gobuster
+* wpscan (gem)
 
 **TO-DO:**
 
@@ -134,6 +135,23 @@ Clones [exploitdb](https://github.com/offensive-security/exploitdb.git) and link
 #### Description
 
 Makes the machine forward traffic from the `NET_FROM` to everything connected to device `tun0`. It is convinient to use it when make a VPN connection on e VM and want that VM to forward traffic to the tunneled network.
+
+### install-bundle.sh
+
+#### Usage
+
+    wget https://raw.githubusercontent.com/mr6r4y/set-ups/master/install-bundle.sh && bash ./install-bundle.sh
+
+#### Description
+
+Bootstrap script and intallation of:
+
+* install-base-dev.sh
+* install-tmux.sh
+* install-webauto.sh
+* install-exploitdb.sh
+* install-netsec.sh
+* install-free-proxies.sh
 
 ## Tools
 
