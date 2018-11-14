@@ -82,7 +82,7 @@ sudo update-rc.d postgresql enable
 sudo service postgresql start
 
 sudo -u postgres psql -f "$SCRIPT_DIR/conf/pg-utf8.sql"
-[ ! $(sudo -u postgres psql postgres -tAc "SELECT 1 FROM pg_roles WHERE rolname='$MSF_DB_USER'") -eq 1 ] && sudo -u postgres createuser $MSF_DB_USER -dRS
+[ $(sudo -u postgres psql postgres -tAc "SELECT 1 FROM pg_roles WHERE rolname='$MSF_DB_USER'") -z ] && sudo -u postgres createuser $MSF_DB_USER -dRS
 sudo -u postgres psql -c "ALTER USER $MSF_DB_USER WITH ENCRYPTED PASSWORD '$MSF_DB_PASSWD';"
 sudo -u postgres dropdb $MSF_DB_DEV_NAME
 sudo -u postgres createdb --owner $MSF_DB_USER $MSF_DB_DEV_NAME
