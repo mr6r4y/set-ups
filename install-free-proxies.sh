@@ -16,13 +16,32 @@ create_repo_dir "$REPODIR" "$USER"
 
 cd $REPODIR
 
-echo "[*] Get Burp"
-wget -O burp_community.sh "https://portswigger.net/burp/releases/download?product=community&version=1.7.36&type=linux"
-echo "[*] Install Burp Community"
-bash burp_community.sh -q
+if [ ! -e "$HOME/BurpSuiteCommunity" ]
+then
+    echo "[*] Get Burp"
+    wget -O burp_community.sh "https://portswigger.net/burp/releases/download?product=community&version=1.7.36&type=linux"
+    echo "[*] Install Burp Community"
+    bash burp_community.sh -q
+fi
 
-echo "[*] Get OWASP ZAP"
-wget "https://github.com/zaproxy/zaproxy/releases/download/2.7.0/ZAP_2_7_0_unix.sh"
-sudo bash ZAP_2_7_0_unix.sh -q
+if [ -e "$HOME/Desktop" ]
+then
+    echo "[*] Copy Burp desktop icon"
+    cp $HOME/BurpSuiteCommunity/*.desktop $HOME/Desktop
+fi
+
+if [ ! -e "$HOME/BurpSuiteCommunity" ]
+then
+    echo "[*] Get OWASP ZAP"
+    wget "https://github.com/zaproxy/zaproxy/releases/download/2.7.0/ZAP_2_7_0_unix.sh"
+    echo "[*] Install OWASP ZAP"
+    sudo bash ZAP_2_7_0_unix.sh -q
+fi
+
+if [ -e "$HOME/Desktop" ]
+then
+    echo "[*] Copy ZAP desktop icon"
+    cp /opt/zaproxy/*.desktop $HOME/Desktop
+fi
 
 cd $OLDDIR
