@@ -51,7 +51,7 @@ link_to_home_local_bin()
 install_rvm()
 {
     # Install RVM
-    if [ -z $(which rvm) ]
+    if [ ! -e $(~/.rvm/scripts/rvm) ]
     then
         echo "[*] Installing RVM "
         curl -sSL https://rvm.io/mpapis.asc | gpg --import -
