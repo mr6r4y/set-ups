@@ -50,11 +50,30 @@ Installs:
 * SecLists
 * dnscan
 * gobuster
-* wpscan
 
 **TO-DO:**
 
 * virtual-host-discovery
+
+### install-wpscan.sh
+
+#### Usage
+
+    ./install-wpscan.sh
+
+#### Description
+
+Installs `wpscan` from sources
+
+### install-free-proxies.sh
+
+#### Usage
+
+    ./install-free-proxies.sh
+
+#### Description
+
+Installs Burp Community and OWASP ZAP
 
 ### install-tmux.sh
 
