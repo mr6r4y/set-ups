@@ -52,19 +52,7 @@ fi
 cd metasploit-framework
 git pull
 
-# Install RVM
-if [ -z $(which rvm) ]
-then
-    echo "[*] Installing RVM "
-    curl -sSL https://rvm.io/mpapis.asc | gpg --import -
-    curl -L https://get.rvm.io | bash -s stable
-    source ~/.rvm/scripts/rvm
-    echo "source ~/.rvm/scripts/rvm" >> ~/.bashrc
-    source ~/.bashrc
-else
-    echo "[*] Include RVM"
-    source ~/.rvm/scripts/rvm
-fi
+install_rvm
 
 # Install ruby version for metasploit
 RUBYVERSION=$(wget https://raw.githubusercontent.com/rapid7/metasploit-framework/master/.ruby-version -q -O - )

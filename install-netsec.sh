@@ -21,6 +21,8 @@ sudo apt-get -y install \
 
 create_repo_dir "$REPODIR" "$USER"
 
+install_rvm
+
 echo "[*] Get SecLists"
 cd $REPODIR
 if [[ ! -e $REPODIR/SecLists ]]; then

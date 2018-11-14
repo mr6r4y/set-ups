@@ -48,3 +48,19 @@ link_to_home_local_bin()
     ln -s "$abs_path" "$HOME/.local/bin/$name"
 }
 
+install_rvm()
+{
+    # Install RVM
+    if [ -z $(which rvm) ]
+    then
+        echo "[*] Installing RVM "
+        curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+        curl -L https://get.rvm.io | bash -s stable
+        source ~/.rvm/scripts/rvm
+        echo "source ~/.rvm/scripts/rvm" >> ~/.bashrc
+        source ~/.bashrc
+    else
+        echo "[*] Include RVM"
+        source ~/.rvm/scripts/rvm
+    fi
+}
