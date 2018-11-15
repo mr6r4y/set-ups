@@ -48,7 +48,7 @@ if [[ ! -e $REPODIR/pack ]]; then
 fi
 
 # Needed by hashcat
-sudo apt-get -y ocl-icd-opencl-dev
+sudo apt-get -y install ocl-icd-opencl-dev
 
 # Install driver for opencl (needed for hashcat)
 if [ ! -e /opt/intel/opencl-1.2-6.4.0.37 ]
