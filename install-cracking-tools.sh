@@ -35,7 +35,7 @@ sudo apt-get -y install \
 
 create_repo_dir "$REPODIR" "$USER"
 
-echo "Clone hashcat, hashcat-utils, pack"
+echo "[*] Clone hashcat, hashcat-utils, pack"
 cd $REPODIR
 if [[ ! -e $REPODIR/hashcat ]]; then
     git clone https://github.com/hashcat/hashcat.git
@@ -63,6 +63,7 @@ then
     wget http://registrationcenter-download.intel.com/akdlm/irc_nas/12556/opencl_runtime_16.1.2_x64_rh_6.4.0.37.tgz
     tar zxvf opencl_runtime_*.tgz
     cd opencl_runtime_16.1.2_x64_rh_6.4.0.37
+    echo "[*] Run ./install.sh for opencl_runtime_16.1.2_x64_rh_6.4.0.37 driver"
     sudo ./install.sh -s "$SCRIPT_DIR/conf/opencl_runtime_silent.cfg"
 
     cd $OLDDIR_1
@@ -74,9 +75,9 @@ cd hashcat/
 git submodule update --init
 make
 
+link_to_home_local_bin ./hashcat
+
 echo "[*] Test hashcat"
 ./example0.sh
-
-link_to_home_local_bin ./hashcat
 
 cd $OLDDIR
