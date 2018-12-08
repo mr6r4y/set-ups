@@ -75,7 +75,7 @@ cd hashcat/
 git submodule update --init
 make
 
-link_to_home_local_bin ./hashcat
+link_to_usr_local_bin ./hashcat
 
 echo "[*] Test hashcat"
 ./example0.sh

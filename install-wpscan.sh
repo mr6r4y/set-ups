@@ -36,6 +36,6 @@ bundle install && rake install
 
 WPSCAN_EXEC=$(which wpscan)
 
-# link_to_home_local_bin "$WPSCAN_EXEC"
+# link_to_usr_local_bin "$WPSCAN_EXEC"
 
 cd $OLDDIR

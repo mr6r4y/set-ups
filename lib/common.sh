@@ -22,6 +22,15 @@ create_local_bin()
     fi
 }
 
+create_usr_local_bin()
+{
+    if [ ! -e "/usr/local/bin" ]
+    then
+        mkdir -p "/usr/local/bin"
+        echo "[*] Create /usr/local/bin"
+    fi
+}
+
 create_repo_dir()
 #@ USAGE: create_repo_dir DIR USER
 #@ DESCRIPTION: Creates directory for user source repositories
@@ -41,11 +50,23 @@ link_to_home_local_bin()
 #@ DESCRIPTION: create symlink in ~/.local/bin if not exists
 {
     create_local_bin
-    name=$(basename "$1")
-    abs_path=$(realpath "$1")
+    local name=$(basename "$1")
+    local abs_path=$(realpath "$1")
     rm -f "$HOME/.local/bin/$name"
     echo "[*] Link $name in $HOME/.local/bin"
     ln -s "$abs_path" "$HOME/.local/bin/$name"
+}
+
+link_to_usr_local_bin()
+#@ USAGE: link_to_usr_local_bin PATH_TO_EXEC
+#@ DESCRIPTION: create symlink in /usr/local/bin if not exists
+{
+    create_usr_local_bin
+    local name=$(basename "$1")
+    local abs_path=$(realpath "$1")
+    sudo rm -f "/usr/local/bin/$name"
+    echo "[*] Link $name in /usr/local/bin"
+    sudo ln -s "$abs_path" "/usr/local/bin/$name"
 }
 
 install_rvm()

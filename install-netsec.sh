@@ -36,7 +36,7 @@ if [[ ! -e $REPODIR/dnscan ]]; then
 fi
 cd dnscan
 git pull
-link_to_home_local_bin ./dnscan.py
+link_to_usr_local_bin ./dnscan.py
 
 echo "[*] Install gobuster"
 cd $REPODIR
@@ -48,7 +48,7 @@ cd gobuster
 git pull
 go get -u github.com/OJ/gobuster
 go build
-link_to_home_local_bin ./gobuster
+link_to_usr_local_bin ./gobuster
 
 cd $OLDDIR
 

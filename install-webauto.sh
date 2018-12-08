@@ -25,7 +25,7 @@ then
     wget "$LATEST_CHROMEDRIVER"
     unzip *.zip
     CHROMEDRIVER_EXEC="$(pwd)/chromedriver"
-    link_to_home_local_bin "$CHROMEDRIVER_EXEC"
+    link_to_usr_local_bin "$CHROMEDRIVER_EXEC"
 fi
 
 # Install google chrome
