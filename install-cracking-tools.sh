@@ -50,24 +50,7 @@ fi
 # Needed by hashcat
 sudo apt-get -y install ocl-icd-opencl-dev
 
-# Install driver for opencl (needed for hashcat)
-if [ ! -e /opt/intel/opencl-1.2-6.4.0.37 ]
-then
-    OLDDIR_1=$(pwd)
-
-    echo "[*] Install opencl_runtime_16.1.2_x64_rh_6.4.0.37 driver"
-
-    [ ! -e "./opencl_runtime" ] && mkdir ./opencl_runtime
-    cd opencl_runtime
-
-    wget http://registrationcenter-download.intel.com/akdlm/irc_nas/12556/opencl_runtime_16.1.2_x64_rh_6.4.0.37.tgz
-    tar zxvf opencl_runtime_*.tgz
-    cd opencl_runtime_16.1.2_x64_rh_6.4.0.37
-    echo "[*] Run ./install.sh for opencl_runtime_16.1.2_x64_rh_6.4.0.37 driver"
-    sudo ./install.sh -s "$SCRIPT_DIR/conf/opencl_runtime_silent.cfg"
-
-    cd $OLDDIR_1
-fi
+$SCRIPT_DIR/install-opencl.sh
 
 # Compile hashcat
 echo "[*] Compile hashcat"
