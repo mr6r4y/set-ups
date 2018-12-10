@@ -29,3 +29,10 @@ then
     echo "[*] Writing $HOME/.tmux.conf"
     $SCRIPT_DIR/tpl-rend.py -t "$SCRIPT_DIR/conf/tmux.conf.tpl" -o "$HOME/.tmux.conf"
 fi
+
+# Copy configuration to /root also
+if sudo [ ! -e "/root/.tmux.conf" ]
+then
+    echo "[*] Writing /root/.tmux.conf"
+    sudo $SCRIPT_DIR/tpl-rend.py -t "$SCRIPT_DIR/conf/tmux.conf.tpl" -o "/root/.tmux.conf"
+fi
