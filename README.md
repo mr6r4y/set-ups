@@ -1,6 +1,6 @@
 # Set-ups
 
-Scripts and common configurations for setting up VMs from scratch and administration.
+Scripts and common configurations for setting up VMs from scratch. The OS must be Debian or Ubuntu based. Tested on Ubuntu 18.04 TLS.
 
 ## Scripts
 
