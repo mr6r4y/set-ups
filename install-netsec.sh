@@ -52,13 +52,3 @@ link_to_usr_local_bin ./gobuster
 
 cd $OLDDIR
 
-install_rvm
-
-# Install ruby version for wpscan
-RUBYVERSION=$(wget https://raw.githubusercontent.com/wpscanteam/wpscan/master/.ruby-version -q -O - )
-echo "[*] Installing/using ruby $RUBYVERSION"
-rvm install $RUBYVERSION
-rvm use $RUBYVERSION --default
-
-echo "[*] Install wpscan from gem"
-gem install wpscan

@@ -14,14 +14,6 @@ set -e
 
 OLDDIR=$(pwd)
 
-echo "[*] Install wpscan"
-
-cd $REPODIR
-if [[ ! -e $REPODIR/wpscan ]]; then
-    echo "[*] Clone wpscan"
-    git clone https://github.com/wpscanteam/wpscan.git
-fi
-
 install_rvm
 
 # Install ruby version for wpscan
@@ -30,12 +22,8 @@ echo "[*] Installing/using ruby $RUBYVERSION"
 rvm install $RUBYVERSION
 rvm use $RUBYVERSION --default
 
-cd wpscan
-
-bundle install && rake install
-
-WPSCAN_EXEC=$(which wpscan)
-
-# link_to_usr_local_bin "$WPSCAN_EXEC"
+echo "[*] Install wpscan from gem"
+gem install wpscan
 
 cd $OLDDIR
+
