@@ -15,12 +15,12 @@ sudo apt-get install tmux
 create_repo_dir "$REPODIR" "$USER"
 
 cd $REPODIR
-if [ ! -e  tmux-plugins ]
+if [ ! -e  tmux-logging ]
 then
-    echo "[*] Clone repository of tmux-plugins"
+    echo "[*] Clone repository of tmux-logging"
     git clone https://github.com/tmux-plugins/tmux-logging.git
 else
-    echo "[!] tmux-plugins already exists"
+    echo "[!] tmux-logging already exists"
 fi
 cd -
 
