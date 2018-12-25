@@ -56,6 +56,6 @@ get_latest_chromedriver_download_url()
 #@ USAGE: get_latest_chromedriver_download_url
 #@ DESCRIPTION: Returns URL to latest chromedriver
 {
-    LATEST_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE")
+    local LATEST_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE")
     echo "https://chromedriver.storage.googleapis.com/$LATEST_VERSION/chromedriver_linux64.zip"
 }
