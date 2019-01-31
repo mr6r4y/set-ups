@@ -55,6 +55,7 @@ Installs:
 **TO-DO:**
 
 * virtual-host-discovery
+* break netsec tools into separate category or per-tool script
 
 ### install-wpscan.sh
 
