@@ -14,6 +14,7 @@ sudo apt-get update
 
 sudo apt-get -y install \
     build-essential \
+    cmake \
     python-dev \
     python-pip \
     python3-dev \
