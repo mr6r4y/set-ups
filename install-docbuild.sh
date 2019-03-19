@@ -13,6 +13,10 @@ set -e
 
 OLDDIR=$(pwd)
 
+sudo add-apt-repository ppa:jonathonf/texlive
+
+sudo apt-get update
+
 sudo apt-get -y install \
     texlive-base \
     texlive-binaries \
@@ -42,3 +46,10 @@ sudo apt-get -y install \
     pandoc \
     xzdec
 
+tlmgr init-usertree
+tlmgr update --all
+
+tlmgr install sectsty
+tlmgr install listings
+tlmgr install newunicodechar
+tlmgr install float
