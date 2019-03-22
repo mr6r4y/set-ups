@@ -14,9 +14,28 @@ set -e
 
 OLDDIR=$(pwd)
 
+sudo apt-get update
+
+echo "[*] Install nmap, tcpdump, iptables-persistent"
 sudo apt-get -y install \
     nmap \
-    tcpdump
+    tcpdump \
+    iptables-persistent
+
+echo "[*] Install mitmproxy"
+sudo pip3 install mitmproxy
+
+echo "[*] Install bettercap"
+sudo apt-get -y install \
+    libusb-1.0-0-dev \
+    libpcap-dev \
+    libnetfilter-queue-dev \
+    build-essential
+go get github.com/bettercap/bettercap
+GOPATH="$HOME/go"
+cd $GOPATH/src/github.com/bettercap/bettercap
+make build 
+sudo make install
 
 create_repo_dir "$REPODIR" "$USER"
 
