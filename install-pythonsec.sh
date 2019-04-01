@@ -35,4 +35,8 @@ sudo pip3 install --upgrade git+https://github.com/arthaud/python3-pwntools.git
 
 sudo pip3 install scapy
 sudo pip3 install PyX
+
+# matplotlib needs pdflatex
+sudo apt-get -y install texlive-latex-base
+sudo apt-get -y install dvipng
 sudo pip3 install matplotlib
