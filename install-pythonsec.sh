@@ -31,8 +31,8 @@ sudo pip3 install unicorn
 # sudo pip install matplotlib
 
 sudo pip install pwntools
+sudo pip3 install --upgrade git+https://github.com/arthaud/python3-pwntools.git
 
 sudo pip3 install scapy
 sudo pip3 install PyX
 sudo pip3 install matplotlib
-sudo pip3 install --upgrade git+https://github.com/arthaud/python3-pwntools.git
