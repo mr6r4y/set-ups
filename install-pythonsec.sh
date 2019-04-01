@@ -26,9 +26,9 @@ sudo pip3 install capstone
 sudo pip install unicorn
 sudo pip3 install unicorn
 
-sudo pip install scapy
-sudo pip install PyX
-sudo pip install matplotlib
+# sudo pip install scapy
+# sudo pip install PyX
+# sudo pip install matplotlib
 
 sudo pip install pwntools
 
