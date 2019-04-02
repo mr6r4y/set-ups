@@ -12,6 +12,7 @@ set -e
 
 OLDDIR=$(pwd)
 
+sudo apt-get -y install nodejs-dev node-gyp libssl1.0-dev
 sudo apt-get -y install nodejs npm
 sudo npm install -g diagrams
 
