@@ -24,3 +24,11 @@ sudo apt-get -y install mscgen graphviz
 
 sudo apt-get -y install xdot
 
+# Install plantuml
+sudo mkdir /opt/plantuml/
+# This URL or find new one at http://plantuml.com/
+wget -O /tmp/plantuml.jar "https://sourceforge.net/projects/plantuml/files/plantuml.jar/download?use_mirror=netix&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fplantuml%2Ffiles%2Fplantuml.jar%2Fdownload%3Fuse_mirror%3Dvorboss"
+sudo mv /tmp/plantuml.jar /opt/plantuml/plantuml.jar
+sudo cp $SCRIPT_DIR/conf/plantuml.sh /opt/plantuml/plantuml
+sudo chmod +x /opt/plantuml/plantuml
+sudo ln -s /opt/plantuml/plantuml /usr/local/bin/plantuml
