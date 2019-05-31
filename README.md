@@ -50,12 +50,11 @@ Installs:
 * SecLists
 * dnscan
 * gobuster
-* wpscan (gem)
-
-**TO-DO:**
-
-* virtual-host-discovery
-* break netsec tools into separate category or per-tool script
+* nmap
+* tcpdump
+* iptables-persistent
+* bettercap
+* mitmproxy
 
 ### install-wpscan.sh
 
@@ -158,22 +157,38 @@ Bootstrap script and intallation of:
 
 ### RE + Exploit Development
 
+Assemblers:
+
 * nasm
-* vasm
-* radare2
-* cutter
+* libxdisasm
+
+Python RE libraries:
+
+* capstone
+* unicorn
+* keystone-engine
+
+GDB:
+
 * gdb-multiarch
 * gdbserver
 * gdb + gef + gef-extras
-* unicorn
+
+RE Tools:
+
+* Ghidra
+* 010-Hex-Edito
+* radare2
+* cutter
+* binwalk
 * libheap
 * miasm
-* binwalk
-* capstone
-* z3
-* libxdisasm
 
-#### ROP
+Symbolic execution:
+
+* z3
+
+ROP:
 
 * ropeme
 * xrop

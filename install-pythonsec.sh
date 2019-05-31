@@ -26,17 +26,13 @@ sudo pip3 install capstone
 sudo pip install unicorn
 sudo pip3 install unicorn
 
-# sudo pip install scapy
-# sudo pip install PyX
-# sudo pip install matplotlib
-
 sudo pip install pwntools
 sudo pip3 install --upgrade git+https://github.com/arthaud/python3-pwntools.git
 
 sudo pip3 install scapy
 sudo pip3 install PyX
 
-# matplotlib needs pdflatex
+# Matplotlib needs pdflatex
 sudo apt-get -y install texlive-latex-base
 sudo apt-get -y install dvipng
 sudo pip3 install matplotlib
