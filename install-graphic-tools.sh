@@ -12,6 +12,8 @@ set -e
 
 OLDDIR=$(pwd)
 
+# WARNING: This installs Ubuntu's default package for NodeJS
+#          The better way is to install latest via NodeJS script
 sudo apt-get -y install nodejs-dev node-gyp libssl1.0-dev
 sudo apt-get -y install nodejs npm
 sudo npm install -g diagrams
