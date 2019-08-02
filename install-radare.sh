@@ -27,14 +27,17 @@ git clone https://github.com/radare/radare2.git
 
 cd radare2
 
-echo "[*] Update repo"
-git pull origin master
+# sudo make uninstall
+# sudo make purge
+
+# echo "[*] Update repo"
+# git pull origin master
 
 echo "[*] System install"
-sudo sys/install.sh
+sudo sys/install.sh --install
 
 echo "[*] r2pm init"
 r2pm init
 
-# echo "[*] Install r2frida"
-# r2pm -ci r2frida
+echo "[*] Install r2frida"
+r2pm -ci r2frida
