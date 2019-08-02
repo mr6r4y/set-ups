@@ -12,6 +12,8 @@ source "$SCRIPT_DIR/config.sh"
 
 set -e
 
+OLDDIR=$(pwd)
+
 sudo pip3 install -U keystone-engine
 sudo pip3 install -U capstone
 sudo pip3 install -U unicorn

@@ -11,4 +11,30 @@ source "$SCRIPT_DIR/config.sh"
 
 set -e
 
-# TO-DO
+OLDDIR=$(pwd)
+
+create_repo_dir "$REPODIR" "$USER"
+
+cd $REPODIR
+
+if [[ -e $REPODIR/radare2 ]]; then
+    echo "[*] Clean repo"
+    sudo rm -rf ./radare2
+fi
+
+echo "[*] Clone radare2"
+git clone https://github.com/radare/radare2.git
+
+cd radare2
+
+echo "[*] Update repo"
+git pull origin master
+
+echo "[*] System install"
+sudo sys/install.sh
+
+echo "[*] r2pm init"
+r2pm init
+
+# echo "[*] Install r2frida"
+# r2pm -ci r2frida
