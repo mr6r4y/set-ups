@@ -17,7 +17,7 @@ sudo apt-get -y install python3-venv libffi-dev libssl-dev
 
 echo "[*] Install Veles"
 wget -O /tmp/Veles_2018.05_64bit_Ubuntu1604.deb  https://github.com/codilime/veles/releases/download/2018.05.0.TIF/Veles_2018.05_64bit_Ubuntu1604.deb
-sudo dpkg -i /tmp/Veles_2018.05_64bit_Ubuntu1604.deb
+sudo apt -y install /tmp/Veles_2018.05_64bit_Ubuntu1604.deb
 rm /tmp/Veles_2018.05_64bit_Ubuntu1604.deb
 
 echo "[*] Install Kaitai"
