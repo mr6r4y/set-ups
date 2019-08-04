@@ -11,10 +11,32 @@ source "$SCRIPT_DIR/config.sh"
 
 set -e
 
+OLDDIR=$(pwd)
+
 echo "[*] Install bison and flex"
 sudo apt-get -y install bison flex
 
-# TO-DO:
+create_repo_dir "$REPODIR" "$USER"
 
-# Gradle
-# https://gradle.org/next-steps/?version=5.0&format=bin
+cd $REPODIR
+
+if [[ ! -e /usr/local/bin/gradle-5 ]]; then
+	echo "[*] Download Gradle"
+	wget "https://services.gradle.org/distributions/gradle-5.0-bin.zip"
+	unzip gradle-5.0-bin.zip
+
+	sudo ln -s $REPODIR/gradle-5.0/bin/gradle /usr/local/bin/gradle-5
+fi
+
+if [[ ! -e $REPODIR/ghidra ]]; then
+    echo "[*] Clone Ghidra"
+    git clone https://github.com/NationalSecurityAgency/ghidra.git
+fi
+
+cd ghidra
+
+echo "[*] Build Ghidra"
+git pull origin master
+gradle-5 --init-script gradle/support/fetchDependencies.gradle init
+gradle-5 buildNatives_linux64
+gradle-5 buildGhidra
