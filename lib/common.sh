@@ -31,6 +31,28 @@ create_usr_local_bin()
     fi
 }
 
+create_owned_dir()
+#@ USAGE: create_owned_dir DIR USER
+#@ DESCRIPTION: Creates directory and changes ownership with sudo
+{
+    sudo mkdir $1
+    sudo chown $2:$2 $1
+}
+
+create_venv_dir()
+#@ USAGE: create_venv_dir DIR USER
+#@ DESCRIPTION: Creates directory for Python virtualenvs
+{
+    if [[ -e $1 ]]; then
+        echo "[!] $1 alredy exists"
+        return
+    fi
+    
+    echo "[*] create_venv_dir $1"
+    create_owned_dir $1 $2
+
+}
+
 create_repo_dir()
 #@ USAGE: create_repo_dir DIR USER
 #@ DESCRIPTION: Creates directory for user source repositories
@@ -41,8 +63,7 @@ create_repo_dir()
     fi
     
     echo "[*] create_repo_dir $1"
-    sudo mkdir $1
-    sudo chown $2:$2 $1
+    create_owned_dir $1 $2
 }
 
 link_to_home_local_bin()
