@@ -39,7 +39,7 @@ sudo apt update
 sudo apt install -y docker-ce docker-ce-cli containerd.io
 
 echo "[*] Manage groups"
-sudo groupadd docker
+sudo groupadd docker || true
 sudo usermod -aG docker $USER
 newgrp docker
 
