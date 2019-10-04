@@ -14,9 +14,11 @@ OLDDIR=$(pwd)
 
 # WARNING: This installs Ubuntu's default package for NodeJS
 #          The better way is to install latest via NodeJS script
-sudo apt-get -y install nodejs-dev node-gyp libssl1.0-dev
-sudo apt-get -y install nodejs npm
-sudo npm install -g diagrams
+# sudo apt-get -y install nodejs-dev node-gyp libssl1.0-dev
+# sudo apt-get -y install nodejs npm
+# sudo npm install -g diagrams
+
+$SCRIPT_DIR/install-nodejs10.sh
 
 sudo add-apt-repository ppa:inkscape.dev/stable
 sudo apt-get update

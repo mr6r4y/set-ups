@@ -43,8 +43,12 @@ sudo apt-get -y install \
     texlive-pictures-doc \
     texlive-pstricks-doc \
     texlive-publishers-doc \
+    libgraphviz-dev \
     pandoc \
     xzdec
+
+sudo pip3 install pygraphviz pandocfilters
+sudo pip2 install pygraphviz pandocfilters
 
 tlmgr init-usertree
 tlmgr update --all
