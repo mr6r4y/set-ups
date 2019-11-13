@@ -12,6 +12,12 @@ set -e
 
 sudo apt-get update
 
+sudo apt -y install git git-lfs \
+    vim vim-gtk3 fonts-dejavu \
+    curl \
+    global \
+    libgconf2-4   # Turtl needs it
+
 sudo apt-get -y install \
     build-essential \
     cmake \
@@ -21,7 +27,4 @@ sudo apt-get -y install \
     python3-pip \
     ruby \
     golang \
-    curl \
     default-jdk
-
-sudo apt-get -y install vim-gtk3 vim fonts-dejavu 
