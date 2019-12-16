@@ -15,6 +15,8 @@ OLDDIR=$(pwd)
 
 create_repo_dir "$REPODIR" "$USER"
 
+sudo apt install -y curl
+
 if [ -z $(which chromedriver) ]
 then
     echo "[*] Install latest chromedriver"
