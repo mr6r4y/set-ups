@@ -13,7 +13,8 @@ set -e
 sudo apt-get update
 
 sudo apt -y install git git-lfs \
-    vim vim-gtk3 fonts-dejavu \
+    vim \
+    fonts-dejavu \
     curl \
     global \
     libgconf2-4   # Turtl needs it
@@ -24,7 +25,4 @@ sudo apt-get -y install \
     python-dev \
     python-pip \
     python3-dev \
-    python3-pip \
-    ruby \
-    golang \
-    default-jdk
+    python3-pip
