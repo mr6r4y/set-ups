@@ -27,6 +27,7 @@ sudo apt-get -y install inkscape
 sudo apt-get -y install mscgen graphviz
 
 sudo apt-get -y install xdot
+# sudo pip3 install graphviz vext vext.gi xdot
 
 # Install plantuml
 sudo mkdir /opt/plantuml/
