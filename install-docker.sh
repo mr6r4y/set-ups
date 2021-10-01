@@ -36,7 +36,7 @@ sudo add-apt-repository \
 
 echo "[*] Install Docker CE"
 sudo apt update
-sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose
+sudo apt install -y docker-ce docker-ce-cli containerd.io
 
 echo "[*] Manage groups"
 sudo groupadd docker || true
