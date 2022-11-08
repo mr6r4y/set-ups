@@ -14,10 +14,13 @@ set -e
 
 OLDDIR=$(pwd)
 
-sudo pip3 install -U keystone-engine
-sudo pip3 install -U capstone
-sudo pip3 install -U unicorn
-sudo pip3 install -U ropper
+pip3 install -U retdec-python
+pip3 install -U pygments
+pip3 install -U rpyc
+pip3 install -U keystone-engine
+pip3 install -U capstone
+pip3 install -U unicorn
+pip3 install -U ropper
 
 create_repo_dir "$REPODIR" "$USER"
 
