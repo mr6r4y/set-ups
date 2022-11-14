@@ -13,9 +13,9 @@ set -e
 
 OLDDIR=$(pwd)
 
-sudo add-apt-repository ppa:jonathonf/texlive
+# sudo add-apt-repository ppa:jonathonf/texlive
 
-sudo apt-get update
+# sudo apt-get update
 
 sudo apt-get -y install \
     texlive-base \
@@ -25,7 +25,6 @@ sudo apt-get -y install \
     texlive-fonts-extra \
     texlive-fonts-extra-links \
     texlive-fonts-recommended \
-    texlive-generic-recommended \
     texlive-lang-cyrillic \
     texlive-latex-base \
     texlive-latex-extra \
@@ -47,13 +46,13 @@ sudo apt-get -y install \
     pandoc \
     xzdec
 
-sudo pip3 install pygraphviz pandocfilters
-sudo pip2 install pygraphviz pandocfilters
+# sudo pip3 install pygraphviz pandocfilters
+# sudo pip2 install pygraphviz pandocfilters
 
-tlmgr init-usertree
-tlmgr update --all
+# tlmgr init-usertree
+# tlmgr update --all
 
-tlmgr install sectsty
-tlmgr install listings
-tlmgr install newunicodechar
-tlmgr install float
+# tlmgr install sectsty
+# tlmgr install listings
+# tlmgr install newunicodechar
+# tlmgr install float
