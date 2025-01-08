@@ -15,11 +15,5 @@ OLDDIR=$(pwd)
 
 sudo apt-get update
 
-sudo apt-get -y install \
-    qemu-kvm \
-    libvirt-bin \
-    virt-manager \
-    bochs \
-    oz \
-    libosinfo-bin \
-    libguestfs-tools
+sudo apt-get -y install qemu-utils qemu-user qemu-system
+sudo apt-get -y install qemu-kvm virt-manager libvirt-daemon-system virtinst libvirt-clients bridge-utils libvirt-dev
